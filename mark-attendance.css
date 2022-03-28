@@ -1,0 +1,44 @@
+.projects {
+    margin-left: 345px;
+    margin-top: 50px;
+    width: 650px;
+    border-radius: 60px;
+    border-radius: 20px;
+}
+
+.select {
+    border-left: 10px;
+    font-size: 1rem;
+    display: flex;
+}
+
+.card-body {
+    display: flex;
+    margin-left: 20px;
+}
+
+.mark {
+    margin-left: 20px;
+}
+
+.card {
+    background-color: cyan;
+    display: block;
+}
+
+h4 {
+    border-bottom: 1px solid black;
+}
+
+.notification {
+    border-left: 20px;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+}
+
+.radio {
+    margin-left: 20px;
+}
