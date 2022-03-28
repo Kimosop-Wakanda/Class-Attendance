@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 :root {
-    --main-color: #DD2F6E;
-    --color-dark: #1D2231;
+    --main-color: #ae20f0;
+    --color-dark: #0f00db;
     --text-grey: #8390A2;
 }
 
@@ -21,6 +22,8 @@
     height: 100%;
     background: var(--main-color);
     z-index: 100;
+    transition: 0.5s;
+    overflow: hidden;
 }
 
 .sidebar-brand {
@@ -38,9 +41,17 @@
     margin-top: 1rem;
 }
 
+.sidebar-menu li:hover {
+    background: rgb(20, 0, 136);
+    height: 45px;
+    padding: .5rem 0rem 0rem .7rem;
+    border-radius: 30px 0px 0px 30px;
+}
+
 .sidebar-menu li {
     width: 100%;
     margin-bottom: 1.3rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sidebar-menu a {
@@ -143,7 +154,7 @@ main {
 .card-single {
     display: flex;
     justify-content: space-between;
-    background: #fff;
+    background: rgb(255, 255, 255);
     padding: 2rem;
     border-radius: 2px;
 }
