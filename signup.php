@@ -50,15 +50,13 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input id="emailAddress" type="email" size="64" maxLength="64" required
-                        placeholder="xyz@gmail.com" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]
-                        {1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                        title="Please provide a valid email">
-        
+                        <input id="emailAddress" name="email" type="email" size="64" maxLength="64" required placeholder="xyz@gmail.com" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]
+                        {1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" title="Please provide a valid email">
+
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <select name="Course">
+                        <select name="course">
                             <option value="0" selected disabled>Course</option>
                             <option value="BCS">BCS</option>
                             <option value="BIT">BIT</option>
@@ -78,7 +76,7 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="psswd" required/>
+                        <input type="password" placeholder="Password" name="password" required />
                     </div>
                     <input type="submit" class="btn" value="Sign up" name="submit" />
                     <p class="social-text">Or Enroll with social platforms</p>
@@ -108,8 +106,8 @@
                         If you are a new student, you can enroll here. If logging in as a guest, use the school portal.
                     </p>
                     <button class="btn transparent" id="sign-up-btn">
-              Sign up
-            </button>
+                        Sign up
+                    </button>
                 </div>
                 <img src="img/log.svg" class="image" alt="" />
             </div>
@@ -120,8 +118,8 @@
                         If you have are already enrolled, you can log in here.
                     </p>
                     <button class="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
+                        Sign in
+                    </button>
                 </div>
                 <img src="img/register.svg" class="image" alt="" />
             </div>
