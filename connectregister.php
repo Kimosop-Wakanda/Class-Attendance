@@ -12,18 +12,16 @@ if (!$conn) {
     // die('Could not connect:' . mysqli_error());
 } else {
     //Taking in the values
+    $unit = $_POST['unit'];
+    $status = $_POST['status'];
     $regno = $_POST['regno'];
-    $email = $_POST['email'];
-    $course = $_POST['course'];
-    $idno = $_POST['idno'];
-    $passwd = $_POST['passwd'];
 
     //Inserting values
-    $sql = "INSERT INTO register(regno, email, course, idno, passwd) 
-            VALUES('$regno', '$email', '$course', '$idno', '$passwd')";
+    $sql = "INSERT INTO attendance(unit, status,regno) 
+            VALUES('$unit', '$status', '$regno')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "You have ENROLLED successfully. You can now Login";
+        echo "You attendance status has been recorded successfully";
     } else {
         echo "Could not insert record" . mysqli_error($conn);
     }

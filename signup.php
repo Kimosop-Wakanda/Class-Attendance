@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
@@ -76,7 +75,7 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" required />
+                        <input type="password" placeholder="Password" name="passwd" required />
                     </div>
                     <input type="submit" class="btn" value="Sign up" name="submit" />
                     <p class="social-text">Or Enroll with social platforms</p>

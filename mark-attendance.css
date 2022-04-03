@@ -1,7 +1,7 @@
 .projects {
     margin-left: 45px;
     margin-top: 20px;
-    width: 700px;
+    width: 900px;
     border-radius: 20px;
 }
 
@@ -20,10 +20,12 @@
 
 .card-header {
     background-color: cyan;
+    width: 900px;
+    display: block;
 }
 
 .mark {
-    margin-left: 20px;
+    margin-left: 50px;
     background-color: cyan;
 }
 
@@ -48,5 +50,9 @@ h4 {
 }
 
 .radio {
+    margin-left: 20px;
+}
+
+.auth {
     margin-left: 20px;
 }

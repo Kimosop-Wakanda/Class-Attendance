@@ -310,34 +310,41 @@
 
                 <!-- Begin Page Content -->
 
+
                 <div class="projects">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Mark Attendance</h4>
-                            <p>You can mark the unit currently in session below:</p>
+                    <form action="connectregister.php" method="POST">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Mark Attendance</h4>
+                                <p>You can mark the unit currently in session below:</p>
 
 
-                            <div class="card-body">
+                                <div class="card-body">
 
-                                <div class="select">
-                                    <select name="units" id="">
-                                        <option value="ccs3353">Research Methodology</option>
-                                        <option value="ccs3353">Mobile Application</option>
-                                        <option value="ccs3353">Programming Languages</option>
-                                        <option value="ccs3353">Simulation and Modelling</option>
-                                        <option value="ccs3353">Artificial Intelligence</option>
-                                        <option value="ccs3353">Distributed Systems</option>
-                                        <option value="ccs3353">Operations Research</option>
-                               </select>
-                                </div>
+                                    <div class="select">
+                                        <select name="unit" id="">
+                                               <option value="research methodology">research methodology</option>
+                                                <option value="mobile application">mobile application</option>
+                                                <option value="programming languages">programming languages</option>
+                                                <option value="simulation and modelling">simulation and modelling</option>
+                                                <option value="artificial intelligence">artificial intelligence</option>
+                                                <option value="distributed systems">distributed systems</option>
+                                                <option value="operations research">operations research</option>
+                                       </select>
+                                    </div>
 
-                                <div class="radio">
-                                    <select name="options" id="">
-                                        <option value="present">present</option>
-                                        <option value="absent">absent</option>
-                                        <option value="absent">absent with permission</option>
-                                        <option value="absent">apply for leave of absence</option>
-                                 </select>
+                                    <div class="radio">
+                                        <select name="status" id="">
+                                                <option value="present">present</option>
+                                                <option value="absent">absent</option>
+                                                <option value="absent with permission">absent with permission</option>
+                                                <option value="leave of absence">apply for leave of absence</option>
+                                         </select>
+                                    </div>
+
+                                    <div class="auth">
+                                        <input type="text" name="regno">
+                                    </div>
                                 </div>
 
 
@@ -345,17 +352,18 @@
                                     <input type="submit">
                                 </div>
                             </div>
+
+                            <div class="notification">
+                                <h4>Attendance Notication</h4>
+                                <p>You have recently marked the attendance or the following class</p>
+                            </div>
+
+                            <!-- Notification Content begin -->
+
                         </div>
-
-                        <div class="notification">
-                            <h4>Attendance Notication</h4>
-                            <p>You have recently marked the attendance or the following class</p>
-                        </div>
-
-                        <!-- Notification Content begin -->
-
-                    </div>
+                    </form>
                 </div>
+
                 <!-- End of Main Content -->
             </div>
             <!-- End of Content Wrapper -->
