@@ -14,11 +14,11 @@ if (!$conn) {
     //Taking in the values
     $unit = $_POST['unit'];
     $status = $_POST['status'];
-    $regno = $_POST['regno'];
+    // $regno = $_POST['regno'];
 
     //Inserting values
-    $sql = "INSERT INTO attendance(unit, status,regno) 
-            VALUES('$unit', '$status', '$regno')";
+    $sql = "INSERT INTO attendance(unit, status) 
+            VALUES('$unit', '$status')";
 
     if (mysqli_query($conn, $sql)) {
         echo "You attendance status has been recorded successfully";

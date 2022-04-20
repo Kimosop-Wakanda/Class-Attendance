@@ -18,6 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mark-attendance.css">
+    <link rel="stylesheet" href="home.css">
 
 </head>
 
@@ -65,7 +66,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item active" href="buttons.html">Register Units</a>
-                        <a class="collapse-item" href="cards.html">Mark Attendance</a>
+                        <a class="collapse-item" href="utilities-color.php">Mark Attendance</a>
                     </div>
                 </div>
             </li>
@@ -79,7 +80,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Notification</a>
+                        <a class="collapse-item" href="cards.html">Notification</a>
                         <a class="collapse-item" href="utilities-border.html">Contact</a>
                         <a class="collapse-item" href="utilities-animation.html">About Us</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
@@ -130,6 +131,7 @@
 
             <!-- Main Content -->
             <div id="content">
+
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -316,62 +318,139 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-
-
-
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Class Attendance 2022</span>
+                <div class="recent-grid">
+                    <div class="projects">
+                        <div class="card">
+                            <form action="regs.php" method="POST">
+                                <div class="card-header">
+                                    <h3>Register Units</h3>
+                                    <button>See all <span class="las la-arrow-right"></span> </button>
+                                </div>
+                                <div class="card-body">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <td>Unit Name</td>
+                                                <td>Code</td>
+                                                <td>Register Unit</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Research Methodology</td>
+                                                <td>CCS 3353</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox" name="unit" value="Research_Methodology">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mobile Application</td>
+                                                <td>CCS 3354</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Programming Languages</td>
+                                                <td>CIT 3350</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Simulation and Modelling</td>
+                                                <td>SMS 3450</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Artificial Intelligence</td>
+                                                <td>CCS 3350</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Distributed Systems</td>
+                                                <td>CCS 3351</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Operations Research</td>
+                                                <td>CCS 3356</td>
+                                                <td>
+                                                    <span class="status"></span>
+                                                    <input type="checkbox">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button class="reg">Register</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Class Attendance 2022</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

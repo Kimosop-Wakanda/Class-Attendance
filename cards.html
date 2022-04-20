@@ -19,6 +19,7 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mark-attendance.css">
 
+
 </head>
 
 <body>
@@ -192,7 +193,7 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">March 30, 2022</div>
-                                        <span class="font-weight-bold">Distributed Manageent systems online cat.</span>
+                                        <span class="font-weight-bold">Distributed Management systems online cat.</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -323,7 +324,7 @@
 
                                     <div class="select">
                                         <select name="unit" id="">
-                                               <option value="research methodology">research methodology</option>
+                                                <option value="research methodology">research methodology</option>
                                                 <option value="mobile application">mobile application</option>
                                                 <option value="programming languages">programming languages</option>
                                                 <option value="simulation and modelling">simulation and modelling</option>
@@ -335,26 +336,30 @@
 
                                     <div class="radio">
                                         <select name="status" id="">
-                                                <option value="present">present</option>
                                                 <option value="absent">absent</option>
+                                                <option value="present">present</option>
                                                 <option value="absent with permission">absent with permission</option>
                                                 <option value="leave of absence">apply for leave of absence</option>
                                          </select>
                                     </div>
 
-                                    <div class="auth">
+                                    <!-- <div class="auth">
                                         <input type="text" name="regno">
+                                    </div> -->
+
+                                    <div class="form-group">
+                                        <label>Expiration Date: </label>
+                                        <input type="text" name="b" id="datepicker" class="form-control">
                                     </div>
-                                </div>
 
-
-                                <div class="mark">
-                                    <input type="submit">
+                                    <div class="mark">
+                                        <input type="submit" name="post" id="">
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="notification">
-                                <h4>Attendance Notication</h4>
+                                <h4>Attendance Notification</h4>
                                 <p>You have recently marked the attendance or the following class</p>
                             </div>
 

@@ -15,12 +15,12 @@ if (!$conn) {
     $regno = $_POST['regno'];
     $email = $_POST['email'];
     $course = $_POST['course'];
-    $idno = $_POST['idno'];
-    $passwd = $_POST['passwd'];
+    // $idno = $_POST['idno'];
+    $password = $_POST['password'];
 
     //Inserting values
-    $sql = "INSERT INTO register(regno, email, course, idno, passwd) 
-            VALUES('$regno', '$email', '$course', '$idno', '$passwd')";
+    $sql = "INSERT INTO register(regno, email, course, password) 
+            VALUES('$regno', '$email', '$course', '$password')";
 
     if (mysqli_query($conn, $sql)) {
         echo "You have ENROLLED successfully. You can now Login";

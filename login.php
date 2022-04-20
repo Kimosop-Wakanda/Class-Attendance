@@ -70,10 +70,10 @@
                             <option value="BED">BED</option>
                         </select>
                     </div>
-                    <div class="input-field">
+                    <!-- <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input type="number" placeholder="ID Number" name="idno" required />
-                    </div>
+                    </div> -->
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="password" required />
