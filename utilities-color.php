@@ -318,31 +318,31 @@ include("./connection/DB.php");
                                             </li>
                                         <?php }
                                         ?>
-                                    </div>
-                                <?php } else { ?>
-                                    <!--old Messages-->
-                                    <div id="list">
-                                        <?php
-                                        foreach ($deactive_notifications_dump as $list_rows) { ?>
-                                            <li id="message_items">
-                                                <div class="message alert alert-danger" data-id=<?php echo $list_rows['n_id']; ?>>
-                                                    <span><?php echo $list_rows['notifications_name']; ?></span>
-                                                    <div class="msg">
-                                                        <p>
-                                                            <?php
-                                                            echo $list_rows['message'];
-                                                            ?>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        <?php }
-                                        ?>
+
+                                    <?php } else { ?>
                                         <!--old Messages-->
+                                        <div id="list">
+                                            <?php
+                                            foreach ($deactive_notifications_dump as $list_rows) { ?>
+                                                <li id="message_items">
+                                                    <div class="message alert alert-danger" data-id=<?php echo $list_rows['n_id']; ?>>
+                                                        <span><?php echo $list_rows['notifications_name']; ?></span>
+                                                        <div class="msg">
+                                                            <p>
+                                                                <?php
+                                                                echo $list_rows['message'];
+                                                                ?>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            <?php }
+                                            ?>
+                                            <!--old Messages-->
 
-                                    <?php } ?>
+                                        <?php } ?>
 
-                                    </div>
+                                        </div>
                             </ul>
 
                         </div>
@@ -353,7 +353,8 @@ include("./connection/DB.php");
                 <!-- End of Top Tab -->
 
                 <div class="container">
-                    <h3 style="text-align: center; color:black ">Mark Your Attenance here:</h3>
+
+                    <h3 style="text-align: center; color:black ">Mark Your Attendance here:</h3>
                     <hr color="black; width=50%"><br>
 
                     <form class="form-horizontal" id="frm_data">
