@@ -1,132 +1,130 @@
-<!DOCTYPE html>
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: index.html");
+    exit;
+}
+ 
+// Include config file
+require_once "config.php";
+ 
+// Define variables and initialize with empty values
+$regno = $password = "";
+$regno_err = $password_err = $login_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    // Check if regno is empty
+    if(empty(trim($_POST["regno"]))){
+        $regno_err = "<p style='color:red'>Please enter regno.</p>";
+    } else{
+        $regno = trim($_POST["regno"]);
+    }
+    
+    // Check if password is empty
+    if(empty(trim($_POST["password"]))){
+        $password_err = "<p style='color:red'>Please enter your password.</p>";
+    } else{
+        $password = trim($_POST["password"]);
+    }
+    
+    // Validate credentials
+    if(empty($regno_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT id, regno, password FROM attendance WHERE regno = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_regno);
+            
+            // Set parameters
+            $param_regno = $regno;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Store result
+                mysqli_stmt_store_result($stmt);
+                
+                // Check if regno exists, if yes then verify password
+                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                    // Bind result variables
+                    mysqli_stmt_bind_result($stmt, $id, $regno, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($password, $hashed_password)){
+                            // Password is correct, so start a new session
+                            session_start();
+                            
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["regno"] = $regno;                            
+                            
+                            // Redirect user to welcome page
+                            header("location: index.html");
+                        } else{
+                            // Password is not valid, display a generic error message
+                            $login_err = "<p style='color:red'>Invalid regno or password.</p>";
+                        }
+                    }
+                } else{
+                    // regno doesn't exist, display a generic error message
+                    $login_err = "<p style='color:red'>Invalid regno or password.</p>";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+    // Close connection
+    mysqli_close($link);
+}
+?>
+ 
+ <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="signup.css" />
-    <link rel="stylesheet" href="signup.php">
-    <title>Sign in & Sign up Form</title>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="login.css">
+    <title>Login Form - Pure Coding</title>
 </head>
-
 <body>
-
     <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form action="#" class="sign-in-form">
-                    <h2 class="title">Sign in</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Registration Number" />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
-                    </div>
-                    <input type="submit" value="Login" class="btn solid" />
-                    <p class="social-text">Or Sign in with social platforms</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-                <form action="connecting.php" method="POST" class="sign-up-form">
-                    <h2 class="title">Enroll</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Registration Number" name="regno" required />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input id="emailAddress" name="email" type="email" size="64" maxLength="64" required placeholder="xyz@gmail.com" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]
-                        {1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" title="Please provide a valid email">
 
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <select name="course">
-                            <option value="0" selected disabled>Course</option>
-                            <option value="BCS">BCS</option>
-                            <option value="BIT">BIT</option>
-                            <option value="BBIT">BBIT</option>
-                            <option value="BMS">BMS</option>
-                            <option value="BSC">BSC</option>
-                            <option value="BMS">BMS</option>
-                            <option value="BDS">BDS</option>
-                            <option value="BCFF">BCFF</option>
-                            <option value="BMC">BMC</option>
-                            <option value="BED">BED</option>
-                        </select>
-                    </div>
-                    <!-- <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="number" placeholder="ID Number" name="idno" required />
-                    </div> -->
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" required />
-                    </div>
-                    <input type="submit" class="btn" value="Sign up" name="submit" />
-                    <p class="social-text">Or Enroll with social platforms</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>Not yet Enrolled ?</h3>
-                    <p>
-                        If you are a new student, you can enroll here. If logging in as a guest, use the school portal.
-                    </p>
-                    <button class="btn transparent" id="sign-up-btn">
-                        Sign up
-                    </button>
-                </div>
-                <img src="img/log.svg" class="image" alt="" />
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-email">
+        <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+            <div class="input-group">
+                <label></label>
+                <input type="text" name="regno" placeholder="Registration Number "class="input-group <?php echo (!empty($regno_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $regno; ?>">
+                <span class="invalid-feedback"><?php echo $regno_err; ?></span>
+            </div>    
+            <div class="input-group">
+                <label></label>
+                <input type="password" name="password" placeholder="Password"class="input-goup <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>Already Enrolled ?</h3>
-                    <p>
-                        If you have are already enrolled, you can log in here.
-                    </p>
-                    <button class="btn transparent" id="sign-in-btn">
-                        Sign in
-                    </button>
-                </div>
-                <img src="img/register.svg" class="image" alt="" />
+            <div class="input-group">
+                <input type="submit" class="btn btn-primary" value="Login">
             </div>
-        </div>
+            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+        </form>
     </div>
-
-    <script src="signup.js"></script>
 </body>
-
 </html>
