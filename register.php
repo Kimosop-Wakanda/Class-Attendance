@@ -11,9 +11,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate regno
     if(empty(trim($_POST["regno"]))){
-        $regno_err = "Please enter a regno.";
+        $regno_err ="<p style='color:red'>Please enter a regno.</p>";
     } elseif(!preg_match('/^[A-Z]{2}[\d]{3}[-][\d]{6}[-][\d]{2}+$/', trim($_POST["regno"]))){
-        $regno_err = "Please use the correct format eg (CT201-100095-19).";
+        $regno_err = "<p style='color:red'>Please use the correct format eg (CT201-100095-19).</p>";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM attendance WHERE regno = ?";
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $regno_err = "This regno is already taken.";
+                    $regno_err = "<p style='color:red'>This regno is already taken.</p>";
                 } else{
                     $regno = trim($_POST["regno"]);
                 }
@@ -46,9 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
 // Validate stdname
     if(empty(trim($_POST["stdname"]))){
-        $stdname_err = "Please enter your name.";
+        $stdname_err = "<p style='color:red'>Please enter your name.</p>";
     } elseif(!preg_match('/^[a-zA-Z]+$/', trim($_POST["stdname"]))){
-        $stdname_err = "stdname can only contain letters";
+        $stdname_err = "<p style='color:red'>stdname can only contain letters</p>";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM attendance WHERE stdname = ?";
@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 5){
-                    $stdname_err = "This stdname is already taken.";
+                    $stdname_err = "<p style='color:red'>This stdname is already taken.</p>";
                 } else{
                     $stdname = trim($_POST["stdname"]);
                 }
@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate course
     if(empty(trim($_POST["course"]))){
-        $course_err = "Please select a course.";
+        $course_err = "<p style='color:red'>Please select a course.</p>";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM attendance WHERE course = ?";
@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1000){
-                    $course_err = "This course is already taken.";
+                    $course_err = "<p style='color:red'>This course is already taken.</p>";
                 } else{
                     $course = trim($_POST["course"]);
                 }
@@ -117,20 +117,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Validate password
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
+        $password_err = "<p style='color:red'>Please enter a password.</p>";     
     } elseif(strlen(trim($_POST["password"])) < 8){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "<p style='color:red'>Password must have atleast 6 characters.</p>";
     } else{
         $password = trim($_POST["password"]);
     }
     
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
+        $confirm_password_err = "<p style='color:red'>Please confirm password.</p>";     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "<p style='color:red'>Password did not match.</p>";
         }
     }
     
@@ -171,31 +171,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="register.css">
+
+	<title>Register Form - Pure Coding</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Registration Number</label>
-                <input type="text" name="regno" placeholder= "Enter Registration number"class="form-control <?php echo (!empty($regno_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $regno; ?>">
+    <div class="container">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-email">
+        <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+            <div class="input-group">
+               
+                <input type="text" name="regno" placeholder= "Enter Registration number"class="input-group <?php echo (!empty($regno_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $regno; ?>">
                 <span class="invalid-feedback"><?php echo $regno_err; ?></span>
-            <div class="form-group">
-                <label>Student name</label>
-                <input type="text" name="stdname" placeholder= "Enter Student name"  class="form-control <?php echo (!empty($stdname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $stdname; ?>">
+            </div>
+            <div class="input-group">
+               
+                <input type="text" name="stdname" placeholder= "Enter Student name"  class="input-group <?php echo (!empty($stdname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $stdname; ?>">
                 <span class="invalid-feedback"><?php echo $stdname; ?></span>
             </div>
 
-            <div class="form-group">
-                <label>Course</label>
+            <div class="input-group">
+                <label>Select Course</label>
                 <select name="course">
                             <option value="0" selected disabled>Course</option>
                             <option value="BCS">BCS</option>
@@ -208,23 +209,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <option value="BCFF">BCFF</option>
                             <option value="BMC">BMC</option>
                             <option value="BED">BED</option>
-                        </select> <class="form-control <?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $course; ?>">
+                        </select> <class="input-group <?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $course; ?>">
                 <span class="invalid-feedback"><?php echo $course_err; ?></span>
             </div>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" placeholder= "Enter Password"class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+            <div class="input-group">
+                <input type="password" name="password" placeholder= "Enter Password"class="input-group <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" placeholder= "Confirm password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+            <div class="input-group">
+                <input type="password" name="confirm_password" placeholder= "Confirm password" class="input-group <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+            <div class="input-group">
+                <input type="submit" class="btn" value="Submit">
+            </div>
+            <div class="input-group">
+                <input type="reset" class="btn"" value="Reset">
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
